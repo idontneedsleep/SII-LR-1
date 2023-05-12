@@ -1,12 +1,12 @@
 import numpy as np
 from sklearn import preprocessing
 
-input_data = np.array([[-1.6, 3.9, 4.5],
- [-4.3, 4.2, 3.3],
- [-5.2, -6.5, 5.1],
-[-5.2, 2.6, -2.2]])
+input_data = np.array([[5.1, -2.9, 3.3],
+ [-1.2, 7.8, -6.1],
+ [3.9, 0.4, 2.1],
+[7.3, -9.9, -4.5]])
 
-data_binarized = preprocessing.Binarizer(threshold=3.8).transform(input_data)
+data_binarized = preprocessing.Binarizer(threshold=2.1).transform(input_data)
 print("\n Binarized data:\n", data_binarized)
 
 print("\nBEFORE: ")
