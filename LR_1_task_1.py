@@ -1,0 +1,43 @@
+import numpy as np
+from sklearn import preprocessing
+
+input_data = np.array([[-1.6, 3.9, 4.5],
+ [-4.3, 4.2, 3.3],
+ [-5.2, -6.5, 5.1],
+[-5.2, 2.6, -2.2]])
+
+data_binarized = preprocessing.Binarizer(threshold=3.8).transform(input_data)
+print("\n Binarized data:\n", data_binarized)
+
+print("\nBEFORE: ")
+print("Mean =", input_data.mean(axis=0))
+print("Std deviation =", input_data.std(axis=0))
+
+data_scaled = preprocessing.scale(input_data)
+print("\nAFTER: ")
+print("Mean =", data_scaled.mean(axis=0))
+print("Std deviation =", data_scaled.std(axis=0))
+
+data_normalized_l1 = preprocessing.normalize(input_data, norm='l1')
+data_normalized_l2 = preprocessing.normalize(input_data, norm='l2')
+print("\nl1 normalized data:\n", data_normalized_l1)
+print("\nl2 normalized data:\n", data_normalized_l2)
+
+input_labels = ['red', 'blасk', 'red', 'green', 'blасk', 'yellow', 'white']
+
+encoder = preprocessing.LabelEncoder()
+encoder.fit(input_labels)
+
+print("Label mapping:")
+for i, item in enumerate(encoder.classes_):
+  print(item, '-->', i)
+
+test_labels = ['green', 'red', 'blасk']
+encoded_values = encoder.transform(test_labels)
+print("\nLabels =", test_labels)
+print("Encoded values =", list(encoded_values))
+
+encoded_values = [3, 0, 4, 1]
+decoded_list = encoder.inverse_transform(encoded_values)
+print("\nEncoded values =", encoded_values)
+print("Decoded labels =", list(decoded_list))
